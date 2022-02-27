@@ -1,8 +1,20 @@
 import React from 'react'
+import Footer from '../../components/Footer/Footer'
+import Navbar from '../../components/Navbar/Navbar'
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <>
+    <header>
+      <Navbar />
+    </header>
+    <div className="main_wrapper">
+      sdf
+    </div>
+    <footer>
+      <Footer />
+    </footer>
+    </>
   )
 }
 

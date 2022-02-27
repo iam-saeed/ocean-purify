@@ -7,6 +7,8 @@ import TextField from "@material-ui/core/TextField";
 
 import './Dashboard.css'
 import Footer from '../../components/Footer/Footer.jsx';
+import Organizations from '../../components/Organizations/Organizations.jsx';
+import Donate from '../../components/Donate/Donate.jsx';
 
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,10 +52,7 @@ const Dashboard = () => {
       <Modal open={isOpen}>
       <div className="modal-card">
         <div className="modal-header">
-          <div className="modal-title">
-            
-          </div>
-              <button className="close-button" onClick={() => setIsOpen(false)}>&times;</button>
+
           </div>
                     <div className="modal-body">
                             <Grid item>
@@ -88,16 +87,58 @@ const Dashboard = () => {
                             </Grid>
                             <br />
                             <Grid item>
-                              <Button variant="contained"color="white" style={{ color: '#13a89e' }}>Log Contribution</Button>
+                              <Button variant="contained"color="primary" style={{ color: 'white' }}>Log Contribution</Button>
+                            </Grid>
+                            <br />
+                            <Grid item align="center">
+                            <Button variant="contained" color="secondary" className="close-button" onClick={() => setIsOpen(false)}>Exit</Button>
                             </Grid>
           </div>
         </div>
       </Modal>
+      <br />
       <div className="progress">
-        sadf
+        <div className="total_pickups">
+          <div className="pickup_title">
+            <h4>Total Purifications</h4>
+          </div>
+          <div className="pickup-sum">
+            <div className="point-total">
+
+            <p id="points">65</p>
+            </div>
+          </div>
+          <div className="pickup_title">
+            <h4>Total Points Earned</h4>
+          </div>
+          <div className="pickup-sum">
+            <div className="point-total">
+
+            <p id="points">130</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <h2>Learn How You Can Help</h2>
+      <div className="progress">
+        <div className="total_pickups">
+          <div className="pickup_title">
+            <h4>Organizations</h4>
+          </div>
+          <div className="pickup-sum">
+            <Organizations />
+          </div>
+          <div className="pickup_title">
+            <h4>Donate</h4>
+          </div>
+          <div className="pickup-sum">
+            <Donate />
+          </div>
+        </div>
       </div>
     </div>
-    <footer id="how_you_can_help">
+    <footer>
         <Footer />
     </footer>
       </>

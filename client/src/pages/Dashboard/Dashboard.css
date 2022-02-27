@@ -12,8 +12,9 @@
 #how_you_can_help {
     display: flex;
     justify-content:space-around;
-    color: #13a89e;
-    background-color:#FFF89A;
+    background-color:white;
+    border: 4px solid #13a89e;
+    border-radius: 20px;
     width: 100%;
 }
 .org_list{
@@ -29,6 +30,10 @@
     display: flex;
     padding: 20px;
 }
+h2 {
+    display: flex;
+    justify-content:center;
+}
 
 .logger_title {
     display: flex;
@@ -41,15 +46,51 @@
     justify-content:center;
 }
 
+.total_pickups {
+    border: 4px solid #13a89e;
+    padding: 20px;
+    border-radius: 4px;
+    min-width: 50%;
+    background-color:#FFF89A;
+    min-height: 200px;
+}
+.pickup_title {
+    display: flex;
+    justify-content: center;
+}
+.pickup-sum {
+    display: flex;
+    justify-content: center;
+}
+.point-total {
+    display: flex;
+    justify-content:center;
+    border: 4px solid #13a89e;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: white;
+    min-width: 200px;
+    min-height: 50px;
+    max-width: 200px;
+    max-height: 50px;
+}
+#points {
+    font-size: 18px;
+    font-weight: bold;
+    color: #13a89e;
+}
+
 .modal-card {
+    display: flex;
+    justify-content:center;
     z-index: 1000;
     border-radius: 20px;
-    min-width: 300px;
-    min-height: 300px;
+    min-width: 400px;
+    min-height: 400px;
     max-width: 600px;
     max-height: 300px;
     position: fixed;
-    background-color:#FFF89A;
+    background-color:white;
     border: 4px solid #13a89e;
     top: 50%;
     left: 50%;
@@ -79,6 +120,9 @@
 }
 
 .modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 10px 15px;
 }
 
