@@ -1,0 +1,30 @@
+#navbar {
+    display: flex;
+    justify-content:space-around;
+    background-color: #13a89e;
+}
+
+#nav_items {
+    display: flex;
+    color: white;
+    font-size: 18px;
+    align-items: center;
+}
+
+#nav_wrapper {
+    align-items:center;
+}
+
+#logo {
+    display: flex;
+    align-items:center;
+    padding: 20px;
+}
+
+#item {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+}
