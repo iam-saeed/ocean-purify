@@ -23,6 +23,7 @@
 
 #item {
     display: flex;
+    z-index: 1000;
     text-decoration: none;
     color: white;
     padding: 20px;

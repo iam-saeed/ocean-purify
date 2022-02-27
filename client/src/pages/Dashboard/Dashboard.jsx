@@ -16,7 +16,7 @@ const Dashboard = () => {
     location: '',
     trashItem: '',
     quantity: null,
-    points: 1
+    points: 2
   })
 
 
@@ -105,7 +105,7 @@ const Dashboard = () => {
           <div className="pickup-sum">
             <div className="point-total">
 
-            <p id="points">65</p>
+            <p id="points">0</p>
             </div>
           </div>
           <div className="pickup_title">
@@ -114,7 +114,7 @@ const Dashboard = () => {
           <div className="pickup-sum">
             <div className="point-total">
 
-            <p id="points">130</p>
+            <p id="points">0</p>
             </div>
           </div>
         </div>
