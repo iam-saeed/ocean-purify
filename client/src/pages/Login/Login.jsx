@@ -20,7 +20,8 @@ const Login = () => {
     console.log(formValues)
   }
   
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     console.log("submit")
   }
 

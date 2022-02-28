@@ -4,21 +4,53 @@ import Button from "@material-ui/core/Button";
 import Modal from '../../components/Modal/Modal.jsx'
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
+import { nanoid } from 'nanoid';
 
 import './Dashboard.css'
 import Footer from '../../components/Footer/Footer.jsx';
 import Organizations from '../../components/Organizations/Organizations.jsx';
 import Donate from '../../components/Donate/Donate.jsx';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState([]);
   const [formValues, setFormValues] = useState({
+    id: 0,
     location: '',
     trashItem: '',
-    quantity: null,
+    quantity: '',
     points: 2
   })
 
+  const addTrashInput = (location, trashItem, quantity, points) => {
+    const newInput = { id: "" + nanoid(), location: location, trashItem: trashItem, quantity: parseInt(quantity), points: 2}
+    setData([...data, newInput])
+  }
+  let q = 0;
+  let value = 0;
+
+  const addPoints = () => {
+    for(let i = 0; i < data.length; i++){
+      value += data[i].points
+      q += data[i].quantity
+    }
+    return value
+  }
+
+  const addQuantity = () => {
+    for(let i = 0; i < data.length; i++){
+      q += data[i].quantity
+    }
+    return q
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTrashInput(formValues.location, formValues.trashItem, formValues.quantity, formValues.points)
+    setIsOpen(false)
+    console.log(addPoints())
+    console.log(q)
+  }
 
   const handleClick = () => {
     setIsOpen(true)
@@ -31,6 +63,7 @@ const Dashboard = () => {
     })
     console.log(formValues)
   }
+
   return (
     <>
     <header>
@@ -55,8 +88,11 @@ const Dashboard = () => {
 
           </div>
                     <div className="modal-body">
-                            <Grid item>
-                            <TextField
+                    <form onSubmit={handleSubmit}>
+      <Grid container alignItems="center"  direction="column">
+  
+        <Grid item>
+        <TextField
                               id="location-input"
                               name="location"
                               label="Location"
@@ -64,19 +100,19 @@ const Dashboard = () => {
                               value={formValues.location}
                               onChange={handleChange}
                               />
-                            </Grid>
-                            <Grid item>
-                            <TextField
+        </Grid>
+        <Grid item>
+          <TextField
                               id="trashItem-input"
                               name="trashItem"
                               label="Trash Item"
                               type="text"
                               value={formValues.trashItem}
                               onChange={handleChange}
-                              />
-                            </Grid>
-                            <Grid item>
-                            <TextField
+          />
+        </Grid>
+        <Grid item>
+        <TextField
                               id="quantity-input"
                               name="quantity"
                               label="Quantity"
@@ -84,16 +120,18 @@ const Dashboard = () => {
                               value={formValues.quantity}
                               onChange={handleChange}
                               />
-                            </Grid>
-                            <br />
-                            <Grid item>
-                              <Button variant="contained"color="primary" style={{ color: 'white' }}>Log Contribution</Button>
-                            </Grid>
-                            <br />
-                            <Grid item align="center">
-                            <Button variant="contained" color="secondary" className="close-button" onClick={() => setIsOpen(false)}>Exit</Button>
-                            </Grid>
-          </div>
+        </Grid>
+        <br />
+        <Grid item>
+          <Button variant="contained" color="primary" type="submit" style={{ color: 'white' }}>Log Contribution</Button>
+        </Grid>
+        <br />
+        <Grid item >
+          <Button onClick={() => setIsOpen(false)} variant="contained"color="secondary" style={{ color: 'white' }}>Exit</Button>
+        </Grid>
+      </Grid>
+    </form>
+                      </div>
         </div>
       </Modal>
       <br />
@@ -105,7 +143,7 @@ const Dashboard = () => {
           <div className="pickup-sum">
             <div className="point-total">
 
-            <p id="points">0</p>
+            <p id="points">{addQuantity()} </p>
             </div>
           </div>
           <div className="pickup_title">
@@ -113,8 +151,8 @@ const Dashboard = () => {
           </div>
           <div className="pickup-sum">
             <div className="point-total">
-
-            <p id="points">0</p>
+          
+            <p id="points">{addPoints() * addQuantity()} </p>
             </div>
           </div>
         </div>
