@@ -12,7 +12,12 @@ const Organizations = () => {
         },
         {
           name:'Ocean Conservancy',
-          url: 'https://oceanconservancy.org/'}
+          url: 'https://oceanconservancy.org/'
+        },
+        {
+          name: 'Oceana',
+          url: 'https://oceana.org/'
+        }
     ]
   return (
     <footer id="how_you_can_help">

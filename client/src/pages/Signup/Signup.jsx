@@ -24,6 +24,7 @@ const Signup = () => {
     console.log("submit")
   }
   return (
+    <div className="wrapper">
     <form onSubmit={handleSubmit}>
     <Grid container alignItems="center" justify="center" direction="column">
       <Grid item>
@@ -79,6 +80,7 @@ const Signup = () => {
       </Button>
     </Grid>
   </form>
+  </div>
   )
 }
 

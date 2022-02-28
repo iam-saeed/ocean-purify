@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import './Login.css';
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -26,6 +26,7 @@ const Login = () => {
   }
 
   return (
+    <div className="wrapper">
     <form onSubmit={handleSubmit}>
       <Grid container alignItems="center" justify="center" direction="column">
         <Grid item>
@@ -61,6 +62,7 @@ const Login = () => {
         </Button>
       </Grid>
     </form>
+    </div>
   )
 }
 

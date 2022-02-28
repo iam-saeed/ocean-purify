@@ -22,7 +22,7 @@ const Dashboard = (props) => {
     points: 2
   })
 
-  const addTrashInput = (location, trashItem, quantity, points) => {
+  const addTrashInput = (location, trashItem, quantity) => {
     const newInput = { id: "" + nanoid(), location: location, trashItem: trashItem, quantity: parseInt(quantity), points: 2}
     setData([...data, newInput])
   }
@@ -48,8 +48,12 @@ const Dashboard = (props) => {
     e.preventDefault();
     addTrashInput(formValues.location, formValues.trashItem, formValues.quantity, formValues.points)
     setIsOpen(false)
-    console.log(addPoints())
-    console.log(q)
+    setFormValues({
+      location: '',
+      trashItem: '',
+      quantity: '',
+
+    })
   }
 
   const handleClick = () => {
@@ -77,7 +81,6 @@ const Dashboard = (props) => {
           <h2>Log Your Purification</h2>
           </div>
           <div className="logger-btn">
-
           <Button onClick={handleClick} variant="contained" color="primary">Log Here</Button>
           </div>
         </div>
@@ -85,53 +88,54 @@ const Dashboard = (props) => {
       <Modal open={isOpen}>
       <div className="modal-card">
         <div className="modal-header">
-
-          </div>
-                    <div className="modal-body">
-                    <form onSubmit={handleSubmit}>
-      <Grid container alignItems="center"  direction="column">
-  
-        <Grid item>
-        <TextField
-                              id="location-input"
-                              name="location"
-                              label="Location"
-                              type="text"
-                              value={formValues.location}
-                              onChange={handleChange}
-                              />
-        </Grid>
-        <Grid item>
-          <TextField
-                              id="trashItem-input"
-                              name="trashItem"
-                              label="Trash Item"
-                              type="text"
-                              value={formValues.trashItem}
-                              onChange={handleChange}
-          />
-        </Grid>
-        <Grid item>
-        <TextField
-                              id="quantity-input"
-                              name="quantity"
-                              label="Quantity"
-                              type="text"
-                              value={formValues.quantity}
-                              onChange={handleChange}
-                              />
-        </Grid>
-        <br />
-        <Grid item>
-          <Button variant="contained" color="primary" type="submit" style={{ color: 'white' }}>Log Contribution</Button>
-        </Grid>
-        <br />
-        <Grid item >
-          <Button onClick={() => setIsOpen(false)} variant="contained"color="secondary" style={{ color: 'white' }}>Exit</Button>
-        </Grid>
-      </Grid>
-    </form>
-                      </div>
+        </div>
+        <div className="modal-body">
+          <form onSubmit={handleSubmit}>
+            <Grid container alignItems="center"  direction="column">
+              <Grid item>
+                <TextField
+                  id="location-input"
+                  name="location"
+                  label="Location"
+                  type="text"
+                  value={formValues.location}
+                  onChange={handleChange}
+                  required
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  id="trashItem-input"
+                  name="trashItem"
+                  label="Trash Item"
+                  type="text"
+                  value={formValues.trashItem}
+                  onChange={handleChange}
+                  required
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  id="quantity-input"
+                  name="quantity"
+                  label="Quantity"
+                  type="text"
+                  value={formValues.quantity}
+                  onChange={handleChange}
+                  required
+                />
+              </Grid>
+              <br />
+              <Grid item>
+                <Button variant="contained" color="primary" type="submit" style={{ color: 'white' }}>Log Contribution</Button>
+              </Grid>
+              <br />
+              <Grid item >
+                <Button onClick={() => setIsOpen(false)} variant="contained"color="secondary" style={{ color: 'white' }}>Exit</Button>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
         </div>
       </Modal>
       <br />

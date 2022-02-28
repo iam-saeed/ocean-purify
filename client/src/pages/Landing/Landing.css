@@ -1,1 +1,14 @@
-r
+img {
+    width: 100%;
+    object-fit:contain;
+    margin-bottom: -5px;
+}
+.landing-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.right {
+    border: 1px solid red;
+    flex: 3;
+}
