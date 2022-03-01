@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <div className="wrapper">
-    <form onSubmit={handleSubmit}>
+    <form id="login_form" onSubmit={handleSubmit}>
       <Grid container alignItems="center" justify="center" direction="column">
         <Grid item>
           <AccountCircleIcon style={{ fontSize: "100px" }} />
