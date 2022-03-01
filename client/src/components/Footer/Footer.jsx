@@ -11,9 +11,9 @@ const Footer = () => {
           <h2 href="" style={{ color: 'white' }}>Save Our Oceans</h2>
         </div>
         <ul id="nav_items">
-          <Link id="item" to="/dashboard">Facebook</Link>
-          <Link id="item" to="/profile">Instagram</Link>
-          <Link id="item" to="/">LinkedIn</Link>
+          <a id="item" style={{ textDecoration: 'none', color: 'white' }} target="_blank" rel="noopener noreferrer "href="https://www.facebook.com">Facebook</a>
+          <a id="item" style={{ textDecoration: 'none', color: 'white' }} target="_blank" rel="noopener noreferrer "href="https://www.instagram.com">Instagram</a>
+          <a id="item" style={{ textDecoration: 'none', color: 'white' }} target="_blank" rel="noopener noreferrer "href="https://www.linkedin.com">LinkedIn</a>
         </ul>
       </nav>
     </div>

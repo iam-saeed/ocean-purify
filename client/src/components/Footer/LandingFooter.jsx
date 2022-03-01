@@ -10,8 +10,8 @@ const LandingFooter = () => {
     <h2 href="" style={{ color: '#00B4D8' }}>Save Our Oceans</h2>
   </div>
   <ul id="nav_items">
-    <Link style={{ color: '#00B4D8', fontWeight: 'bold' }} id="item" to="www.facebook.com">Facebook</Link>
-    <Link style={{ color: '#00B4D8', fontWeight: 'bold' }} id="item" to="/profile">Instagram</Link>
+    <Link style={{ color: '#00B4D8', fontWeight: 'bold' }} id="item" to="/">Facebook</Link>
+    <Link style={{ color: '#00B4D8', fontWeight: 'bold' }} id="item" to="/">Instagram</Link>
     <Link style={{ color: '#00B4D8', fontWeight: 'bold' }} id="item" to="/">LinkedIn</Link>
   </ul>
 </nav>
