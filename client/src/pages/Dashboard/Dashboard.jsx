@@ -10,6 +10,7 @@ import './Dashboard.css'
 import Footer from '../../components/Footer/Footer.jsx';
 import Organizations from '../../components/Organizations/Organizations.jsx';
 import Donate from '../../components/Donate/Donate.jsx';
+import axios from 'axios';
 
 const Dashboard = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +26,7 @@ const Dashboard = (props) => {
   const addTrashInput = (location, trashItem, quantity) => {
     const newInput = { id: "" + nanoid(), location: location, trashItem: trashItem, quantity: parseInt(quantity), points: 2}
     setData([...data, newInput])
+    axios.post("")
   }
   let q = 0;
   let value = 0;
@@ -32,7 +34,6 @@ const Dashboard = (props) => {
   const addPoints = () => {
     for(let i = 0; i < data.length; i++){
       value += data[i].points
-      q += data[i].quantity
     }
     return value
   }
@@ -162,7 +163,32 @@ const Dashboard = (props) => {
         </div>
       </div>
       <br />
-      <h2>Learn How You Can Help</h2>
+      <h2>Past Purifications</h2>
+      <div className="progress">
+        <div className="total_pickups">
+          {data.length === 0 ?    <div className="pickup_title">
+            <h3>No Past Purifications Yet</h3> 
+          </div> :     <div className="pickup-sum-history">
+            {data.map(org => (
+              <div id="how_you_can_help">
+                <p><strong>Location: </strong>{org.location}</p>
+                <p><strong>Trash Item: </strong> {org.trashItem}</p>
+                <p><strong>Quantity: </strong>{org.quantity}</p>
+              
+              </div>
+            ))}
+            <br />
+          </div>}
+
+          <div className="pickup_title">
+   
+          </div>
+  
+        </div>
+        
+      </div>
+      <br />
+      <h2>More Ways You Can Help</h2>
       <div className="progress">
         <div className="total_pickups">
           <div className="pickup_title">

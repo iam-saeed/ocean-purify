@@ -14,6 +14,10 @@ const Login = () => {
     password: ''
   })
 
+  const [error, setError] = useState({
+    error: ''
+  })
+
   const handleChange = (e) => {
     setFormValues({
       ...formValues,
@@ -29,12 +33,13 @@ const Login = () => {
     .then(() => {
       navigate("/dashboard")
     })
-    .catch(() => {
-      console.log('error')
+    .catch((res) => {
+      console.log({ message: res.message })
     })
   }
 
   return (
+    <section>
     <div className="wrapper">
     <form id="login_form" onSubmit={handleSubmit}>
       <Grid container alignItems="center" justify="center" direction="column">
@@ -72,6 +77,7 @@ const Login = () => {
       </Grid>
     </form>
     </div>
+    </section>
   )
 }
 

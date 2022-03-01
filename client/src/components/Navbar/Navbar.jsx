@@ -11,7 +11,6 @@ const Navbar = () => {
         </div>
         <ul id="nav_items">
           <Link id="item" to="/dashboard">Dashboard</Link>
-          <Link id="item" to="/profile">Profile</Link>
           <Link id="item" to="/">Logout</Link>
         </ul>
       </nav>

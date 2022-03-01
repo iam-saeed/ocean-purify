@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './Signup.css'
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -33,8 +34,10 @@ const Signup = () => {
     })
   }
   return (
+    <section>
+
     <div className="wrapper">
-    <form onSubmit={handleSubmit}>
+    <form id="signup_form" onSubmit={handleSubmit}>
     <Grid container alignItems="center" justify="center" direction="column">
       <Grid item>
         <AccountCircleIcon style={{ fontSize: "100px" }} />
@@ -90,6 +93,7 @@ const Signup = () => {
     </Grid>
   </form>
   </div>
+   </section>
   )
 }
 

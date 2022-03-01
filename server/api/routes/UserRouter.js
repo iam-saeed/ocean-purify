@@ -1,7 +1,6 @@
 const express = require('express');
 const User = require("../models/user-model.js");
 const bcrypt = require("bcryptjs");
-const checkUser = require("../middleware/checkIfUserExists.js");
 
 const router = express.Router();
 
@@ -44,6 +43,18 @@ router.post("/login", checkIfUserExists,  (req, res) => {
         } else {
             res.status(401).json({ message: "Username or password is incorrect." })
         }
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
+router.post("/progress", async (req, res) => {
+    try {
+        const { data } = req.body;
+        const newProgress = await User.addProgress({
+            progress: data
+        })
+        res.status(201).json(newProgress)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }

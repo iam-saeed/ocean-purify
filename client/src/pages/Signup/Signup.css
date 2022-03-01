@@ -1,13 +1,17 @@
-form {
+#signup_form {
     border: 4px solid lightgray;
     border-radius: 20px;
     padding: 50px;
     width: 600px;
     height: 400px;
+    margin-top: 15vh;
+}
+section {
+    margin-top: -15vh;
+    height: 100vh;
 }
 
 .wrapper {
     display: flex;
-    margin-top: 15vh;
     justify-content: center;
 }

@@ -8,6 +8,10 @@ const getUserById = (id) => {
     return db("users").where("id", id).first()
 }
 
+const getUserProgress = (id) => {
+    return db("users")
+}
+
 const findBy = (filter) => {
     return db("users").where(filter).orderBy("users.id")
 }
@@ -20,9 +24,18 @@ const addUser = async (user) => {
     })
 }
 
+const addProgress = async (user) => {
+    await db("users")
+    .insert({ progress: user.data })
+    .then((ids) => {
+        return getUserById([ids[0]])
+    })
+}
+
 module.exports = {
     getUserById,
     getAllUsers,
     addUser,
-    findBy
+    findBy,
+    addProgress
 }
