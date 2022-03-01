@@ -1,8 +1,23 @@
 const express = require('express');
 const User = require("../models/user-model.js");
 const bcrypt = require("bcryptjs");
+const checkUser = require("../middleware/checkIfUserExists.js");
 
 const router = express.Router();
+
+const checkIfUserExists = async (req, res, next) => {
+    try {
+        const rows = await User.findBy({ username: req.body.username });
+        if(rows.length){
+            req.userData = rows[0];
+            next();
+        } else {
+            res.status(401).json({ message: 'Account does not exist' })
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
 
 router.post("/signup", async (req, res) => {
     try {
@@ -20,12 +35,12 @@ router.post("/signup", async (req, res) => {
     }
 })
 
-router.post("/login", (req, res) => {
+router.post("/login", checkIfUserExists,  (req, res) => {
     try {
-        const password = req.body.password;
-        const verified = bcrypt.compareSync(password, req.formValues.password)
+        const { password } = req.body;
+        const verified = bcrypt.compareSync(password, req.userData.password)
         if(verified) {
-            res.json('Logged in')
+            res.status(200).json({ message: 'logged in' })
         } else {
             res.status(401).json({ message: "Username or password is incorrect." })
         }

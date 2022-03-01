@@ -8,8 +8,12 @@ const getUserById = (id) => {
     return db("users").where("id", id).first()
 }
 
+const findBy = (filter) => {
+    return db("users").where(filter).orderBy("users.id")
+}
+
 const addUser = async (user) => {
-    const { id } = await db("users")
+    await db("users")
     .insert({ fullname: user.fullname, email: user.email, username: user.username, password: user.password })
     .then((ids) => {
         return getUserById(ids[0])
@@ -19,5 +23,6 @@ const addUser = async (user) => {
 module.exports = {
     getUserById,
     getAllUsers,
-    addUser
+    addUser,
+    findBy
 }
