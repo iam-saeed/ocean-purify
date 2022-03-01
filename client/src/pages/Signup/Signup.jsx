@@ -3,6 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [formValues, setFormValues] = useState({
@@ -19,9 +21,16 @@ const Signup = () => {
     })
     console.log(formValues)
   }
-  
-  const handleSubmit = () => {
-    console.log("submit")
+  let navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post("http://localhost:5000/users/signup", formValues)
+    .then(() => {
+      navigate("/login")
+    }).catch(() => {
+      console.log("error")
+    })
   }
   return (
     <div className="wrapper">
