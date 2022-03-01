@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import axios from 'axios';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -19,10 +21,17 @@ const Login = () => {
     })
     console.log(formValues)
   }
+  let navigate = useNavigate();
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("submit")
+    axios.post("http://localhost:5000/users/login", formValues)
+    .then(() => {
+      navigate("/dashboard")
+    })
+    .catch(() => {
+      console.log('error')
+    })
   }
 
   return (
